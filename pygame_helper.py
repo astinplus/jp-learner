@@ -45,7 +45,11 @@ class textBox:
         self.size = size
         self._update()
     
-    # setter methods ===========================================================================================
+    def set_text(self, text):
+        self.text = text
+        self._update()
+    
+    # getter methods ===========================================================================================
 
     def get_rect(self):
         return self.rect

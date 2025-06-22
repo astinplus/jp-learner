@@ -127,8 +127,6 @@ def quiz(filename,correct_needed, jp_font_file, en_font_file,clock,screen):
                         en_color = (255, 255, 255)
                     elif event.key == pygame.K_ESCAPE:
                         quiz_running = False
-            elif event.type == pygame.WINDOWRESIZED:
-                print(screen.get_size())
 
         render_screen()
 

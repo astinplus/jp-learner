@@ -6,7 +6,7 @@ from quiz import quiz
 from menu import menu
 
 
-QUIZ_CSV = "quiz_files/hiragana_vowels.csv"
+QUIZ_DIR = "quiz_files/"
 JP_FONT = 'jp_fonts/NotoSansJP-VariableFont_wght.ttf'
 EN_FONT = 'SourceCodePro-VariableFont_wght.ttf'
 CORRECT_NEEDED = 2
@@ -31,9 +31,9 @@ running = menu(
     screen=Screen
 )
 
-while(running != -1):
-    if running == 1:
-        quiz(filename=QUIZ_CSV, 
+while(running[0] != -1):
+    if running[0] == 1:
+        quiz(filename=QUIZ_DIR + running[1], 
              correct_needed=CORRECT_NEEDED,
              jp_font_file=JP_FONT,
              en_font_file=EN_FONT,
