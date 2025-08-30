@@ -1,8 +1,15 @@
 import pygame
 import os
 from pygame_helper import textBox
+from quiz import quiz
 
-def menu(en_font_file, clock, screen):
+# Quiz Constants
+QUIZ_DIR = "quiz_files/"
+JP_FONT = 'jp_fonts/NotoSansJP-VariableFont_wght.ttf'
+EN_FONT = 'SourceCodePro-VariableFont_wght.ttf'
+CORRECT_NEEDED = 2
+
+def quiz_menu(en_font_file, clock, screen):
 
     quiz_files = os.listdir("quiz_files")
     curr_quiz = 0
@@ -70,7 +77,14 @@ def menu(en_font_file, clock, screen):
                 if event.key == pygame.K_ESCAPE:
                     return [-1]
                 if event.key == pygame.K_RETURN:
-                    return [1, quiz_files[curr_quiz]]
+                    # return [1, quiz_files[curr_quiz]]
+                    quiz(filename=QUIZ_DIR + quiz_files[curr_quiz], 
+                        correct_needed=CORRECT_NEEDED,
+                        jp_font_file=JP_FONT,
+                        en_font_file=EN_FONT,
+                        clock=clock,
+                        screen=screen
+                    )
                 if event.key == pygame.K_RIGHT:
                     
                     if curr_quiz == len(quiz_files) - 1:

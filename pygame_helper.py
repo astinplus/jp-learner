@@ -59,3 +59,16 @@ class textBox:
     
     def get_pos(self):
         return self.pos
+    
+class textButton(textBox):
+    def __init__(self, font_file, text='', size=12, aa=True, text_color=(255, 255, 255), bg_color=None, action=None):
+        super().__init__(font_file, text, size, aa, text_color, bg_color)
+        self.action = action
+    
+    def click(self, event):
+        if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+            if self.rect.collidepoint(event.pos):
+                if self.action:
+                    self.action()
+                return True
+        return False

@@ -3,7 +3,8 @@ import pygame
 import csv
 import random
 from quiz import quiz
-from menu import menu
+from quiz_menu import quiz_menu
+from main_menu import main_menu
 
 
 QUIZ_DIR = "quiz_files/"
@@ -25,28 +26,11 @@ en_font = pygame.font.Font(EN_FONT, 112)
 en_color = (255, 255, 255)
 a_state = 0
 
-running = menu(
-    en_font_file=EN_FONT,
-    clock=Clock,
-    screen=Screen
-)
-
-while(running[0] != -1):
-    if running[0] == 1:
-        quiz(filename=QUIZ_DIR + running[1], 
-             correct_needed=CORRECT_NEEDED,
-             jp_font_file=JP_FONT,
-             en_font_file=EN_FONT,
-             clock=Clock,
-             screen=Screen
-        )
-
-    running = menu(
+main_menu(
         en_font_file=EN_FONT,
         clock=Clock,
         screen=Screen
-    )
-
+)
 
 pygame.font.quit()
 pygame.quit()
