@@ -71,7 +71,8 @@ def main_menu(en_font_file, clock, screen):
             if event.type == pygame.QUIT:
                 menu_running = False
             
-            if event.type == pygame.WINDOWRESIZED or quiz_button.click(event) or reading_button.click(event):
+            # will need to resize after switching pages (won't know if window is resized there)
+            elif event.type == pygame.WINDOWRESIZED or quiz_button.click(event) or reading_button.click(event):
                 screen_width, screen_height = screen.get_size()
                 title.set_size(int(screen_width / (len(title.text)*0.7)))
                 title.set_pos((screen_width / 2,title.size))
@@ -82,7 +83,8 @@ def main_menu(en_font_file, clock, screen):
                 reading_button.set_pos((screen_width / 2, screen_height * 2 / 3 + 80))
                 reading_button.set_size(int(screen_width / (len(reading_button.text))))
 
-            # quiz_button.click(event)
-            # reading_button.click(event)
+            elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+                menu_running = False
+
         render_screen()
         clock.tick(60)  # limits FPS to 60
